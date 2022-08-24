@@ -2,6 +2,26 @@
 #include <stdio.h>
 
 /**
+ * is_full - checks if tree is full
+ *
+ * @tree: tree to check
+ * Return: result sum
+ */
+int is_full(const binary_tree_t *tree)
+{
+	int res = 0;
+
+	if (!tree)
+		return (0);
+	if ((tree->left && !tree->right) || (!tree->left && tree->right))
+		return (1);
+
+	res += is_full(tree->left);
+	res += is_full(tree->right);
+	return (res);
+}
+
+/**
  * height - computes height of a node
  * @tree: node
  * Return: height of left side
@@ -31,6 +51,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 
 	if (!tree)
 		return (0);
+	res += is_full(tree);
 	res += height(tree->left) - height(tree->right);
 	res += binary_tree_is_perfect(tree->left);
 	res += binary_tree_is_perfect(tree->left);
