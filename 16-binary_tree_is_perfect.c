@@ -41,7 +41,7 @@ int height(const binary_tree_t *tree)
 }
 
 /**
- * booolian - checks if a tree is perfect
+ * boolian - checks if a tree is perfect
  * @tree: node to compute balance factor of
  * Return: 0 or 1
  */
