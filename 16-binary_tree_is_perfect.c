@@ -41,6 +41,24 @@ int height(const binary_tree_t *tree)
 }
 
 /**
+ * booolian - checks if a tree is perfect
+ * @tree: node to compute balance factor of
+ * Return: 0 or 1
+ */
+int boolian(const binary_tree_t *tree)
+{
+	int res = 0;
+
+	if (!tree)
+		return (0);
+	res += is_full(tree);
+	if (res)
+		return (res);
+	res += height(tree->left) - height(tree->right);
+	return (res);
+}
+
+/**
  * binary_tree_is_perfect - checks if a tree is perfect
  * @tree: node to compute balance factor of
  * Return: 0 or 1
@@ -49,12 +67,8 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 {
 	int res = 0;
 
-	if (!tree)
-		return (0);
-	res += is_full(tree);
-	res += height(tree->left) - height(tree->right);
-	res += binary_tree_is_perfect(tree->left);
-	res += binary_tree_is_perfect(tree->left);
+	res = boolian(tree);
+	/*printf("res === %d\n", res);*/
 	if (res)
 		return (0);
 	return (1);
