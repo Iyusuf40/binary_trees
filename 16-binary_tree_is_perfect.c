@@ -54,7 +54,7 @@ int boolian(const binary_tree_t *tree)
 	res += is_full(tree);
 	if (res)
 		return (res);
-	res += height(tree->left) - height(tree->right);
+	res = height(tree->left) - height(tree->right);
 	return (res);
 }
 
